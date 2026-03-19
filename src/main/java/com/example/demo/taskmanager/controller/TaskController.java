@@ -19,30 +19,29 @@ public class TaskController {
     private TaskService service;
 
     @GetMapping
-    public String listar(Model model){
+    public String listar(Model model) {
 
-    model.addAttribute("pendientes", service.buscarPorEstado(Estado.PENDIENTE));
-    model.addAttribute("progreso", service.buscarPorEstado(Estado.EN_PROGRESO));
-    model.addAttribute("terminadas", service.buscarPorEstado(Estado.TERMINADO));
+        model.addAttribute("pendientes", service.buscarPorEstado(Estado.PENDIENTE));
+        model.addAttribute("progreso", service.buscarPorEstado(Estado.EN_PROGRESO));
+        model.addAttribute("terminadas", service.buscarPorEstado(Estado.TERMINADO));
 
-    return "tasks";
-}
+        return "tasks";
+    }
 
     @PostMapping("/crear")
-    public String crear(Task task){
+    public String crear(Task task) {
         service.guardar(task);
         return "redirect:/tasks";
     }
 
-   
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable("id") Long id){
-    service.eliminar(id);
-    return "redirect:/tasks";
-}
+    public String eliminar(@PathVariable("id") Long id) {
+        service.eliminar(id);
+        return "redirect:/tasks";
+    }
 
     @GetMapping("/estado/{estado}")
-    public String filtrar(@PathVariable("estado") Estado estado, Model model){
+    public String filtrar(@PathVariable("estado") Estado estado, Model model) {
 
         List<Task> tasks = service.buscarPorEstado(estado);
 
@@ -51,17 +50,18 @@ public class TaskController {
 
         return "tasks";
     }
+
     @GetMapping("/mover/{id}/{estado}")
     public String mover(
-        @PathVariable("id") Long id,
-        @PathVariable("estado") Estado estado){
+            @PathVariable("id") Long id,
+            @PathVariable("estado") Estado estado) {
 
-    Task task = service.buscarPorId(id);
+        Task task = service.buscarPorId(id);
 
-    task.setEstado(estado);
+        task.setEstado(estado);
 
-    service.guardar(task);
+        service.guardar(task);
 
-    return "redirect:/tasks";
-}
+        return "redirect:/tasks";
+    }
 }
