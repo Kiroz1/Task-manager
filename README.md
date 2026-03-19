@@ -1,4 +1,8 @@
 # Task Manager (Spring Boot)
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-Template_Engine-green)
+![H2](https://img.shields.io/badge/Database-H2-blue)
 
 Aplicación web sencilla para la **gestión de tareas** desarrollada con Java y Spring Boot.
 El proyecto implementa operaciones básicas para administrar tareas y sirve como **base para un sistema de administración de tareas más completo**.
@@ -38,21 +42,7 @@ Cada tarea puede encontrarse en uno de los siguientes estados:
 * EN_PROGRESO
 * TERMINADO
 
-## Estructura del proyecto
 
-```
-src
- └─ main
-     ├─ java
-     │   └─ controller
-     │   └─ service
-     │   └─ repository
-     │   └─ model
-     │
-     └─ resources
-         ├─ templates
-         └─ static
-```
 
 ### Capas
 
